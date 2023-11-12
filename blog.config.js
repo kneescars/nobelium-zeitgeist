@@ -1,5 +1,5 @@
 const BLOG = {
-  title: 'Digital  Zeitgeist',
+  title: 'Digital Zeitgeist',
   author: 'Cassiano Gobbet',
   email: 'cassiano[at]zeitgeist.digital',
   link: 'https://zeitgeist.digital',
