@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+# public
+public/favicon.dark_.png
+public/favicon_.png
+
 # testing
 /coverage
 
