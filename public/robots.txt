@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://zeitgeist.digital
+
+# Sitemaps
+Sitemap: https://zeitgeist.digital/sitemap.xml

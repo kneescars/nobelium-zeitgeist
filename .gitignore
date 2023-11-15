@@ -25,6 +25,8 @@ public/favicon_.png
 .vscode/*
 !.vscode/extensions.json
 *.pem
+.env
+.hushlogin
 
 # debug
 npm-debug.log*
@@ -39,5 +41,3 @@ yarn-error.log*
 
 # vercel
 .vercel
-public/robots.txt
-public/sitemap.xml
