@@ -1,7 +1,7 @@
 const BLOG = {
   title: 'Digital Zeitgeist',
   author: 'Cassiano Gobbet',
-  email: 'cassiano[at]zeitgeist.digital',
+  email: 'https://t.me/cassiano_telegram',
   link: 'https://zeitgeist.digital',
   description: 'The zeroes and ones shaping our times.',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
@@ -12,7 +12,7 @@ const BLOG = {
   darkBackground: '#18181B', // use hex value, don't forget '#'
   path: '', // leave this empty unless you want to deploy Nobelium in a folder
   since: 2023, // If leave this empty, current year will be used.
-  postsPerPage: 7,
+  postsPerPage: 10,
   sortByDate: true,
   showAbout: true,
   showArchive: true,

@@ -27,6 +27,7 @@ public/favicon_.png
 *.pem
 .env
 .hushlogin
+package-lock_backup.json
 
 # debug
 npm-debug.log*
