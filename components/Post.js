@@ -35,7 +35,7 @@ export default function Post(props) {
         <div className="mr-2 mb-4 md:ml-0">
           <FormattedDate date={post.date} />
         </div>
-        {Array.isArray(post.tags) && (
+        {Array.isArray(post.tags) && ( // Ensure post.tags is an array before mapping
           <div className="flex flex-nowrap max-w-full overflow-x-auto article-tags">
             {post.tags.map(tag => (
               <TagItem key={tag} tag={tag} />
@@ -49,6 +49,8 @@ export default function Post(props) {
           <NotionRenderer recordMap={blockMap} fullPage={false} darkMode={dark} />
         </div>
         <div className={cn('order-first lg:order-[unset] w-full lg:w-auto max-w-2xl lg:max-w-[unset] lg:min-w-[160px]', fullWidth ? 'flex-none' : 'flex-1')}>
+          {/* `65px` is the height of expanded nav */}
+          {/* TODO: Remove the magic number */}
           <TableOfContents blockMap={blockMap} className="pt-3 sticky" style={{ top: '65px' }} />
         </div>
       </div>
