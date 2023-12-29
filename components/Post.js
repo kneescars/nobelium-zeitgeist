@@ -8,41 +8,60 @@ import cn from 'classnames'
 import { useConfig } from '@/lib/config'
 import useTheme from '@/lib/theme'
 
-export default function Post(props) {
+/**
+ * A post renderer
+ *
+ * @param {PostProps} props
+ *
+ * @typedef {object} PostProps
+ * @prop {object}   post       - Post metadata
+ * @prop {object}   blockMap   - Post block data
+ * @prop {string}   emailHash  - Author email hash (for Gravatar)
+ * @prop {boolean} [fullWidth] - Whether in full-width mode
+ */
+export default function Post (props) {
   const BLOG = useConfig()
   const { post, blockMap, emailHash, fullWidth = false } = props
   const { dark } = useTheme()
 
   return (
     <article className={cn('flex flex-col', fullWidth ? 'md:px-24' : 'items-center')}>
-      <h1 className={cn('w-full font-bold text-3xl text-black dark:text-white', { 'max-w-2xl px-4': !fullWidth })}>
+      <h1 className={cn(
+        'w-full font-bold text-3xl text-black dark:text-white',
+        { 'max-w-2xl px-4': !fullWidth }
+      )}>
         {post.title}
       </h1>
-      <nav className={cn('w-full flex mt-7 items-start text-gray-500 dark:text-gray-400', { 'max-w-2xl px-4': !fullWidth })}>
-        <div className="flex mb-4">
-          <a href={BLOG.socialLink || '#'} className="flex">
-            <Image
-              alt={BLOG.author}
-              width={24}
-              height={24}
-              src={`https://gravatar.com/avatar/${emailHash}`}
-              className="rounded-full"
-            />
-            <p className="ml-2 md:block">{BLOG.author}</p>
-          </a>
-          <span className="block">&nbsp;/&nbsp;</span>
-        </div>
-        <div className="mr-2 mb-4 md:ml-0">
-          <FormattedDate date={post.date} />
-        </div>
-        {Array.isArray(post.tags) && ( // Ensure post.tags is an array before mapping
-          <div className="flex flex-nowrap max-w-full overflow-x-auto article-tags">
-            {post.tags.map(tag => (
-              <TagItem key={tag} tag={tag} />
-            ))}
+      {post.type[0] !== 'Page' && (
+        <nav className={cn(
+          'w-full flex mt-7 items-start text-gray-500 dark:text-gray-400',
+          { 'max-w-2xl px-4': !fullWidth }
+        )}>
+          <div className="flex mb-4">
+            <a href={BLOG.socialLink || '#'} className="flex">
+              <Image
+                alt={BLOG.author}
+                width={24}
+                height={24}
+                src={`https://gravatar.com/avatar/${emailHash}`}
+                className="rounded-full"
+              />
+              <p className="ml-2 md:block">{BLOG.author}</p>
+            </a>
+            <span className="block">&nbsp;/&nbsp;</span>
           </div>
-        )}
-      </nav>
+          <div className="mr-2 mb-4 md:ml-0">
+            <FormattedDate date={post.date} />
+          </div>
+          {/* {post.tags && (
+            <div className="flex flex-nowrap max-w-full overflow-x-auto article-tags">
+              {post.tags.map(tag => (
+                <TagItem key={tag} tag={tag} />
+              ))}
+            </div>
+          )} */}
+        </nav>
+      )}
       <div className="self-stretch -mt-4 flex flex-col items-center lg:flex-row lg:items-stretch">
         {!fullWidth && <div className="flex-1 hidden lg:block" />}
         <div className={fullWidth ? 'flex-1 pr-4' : 'flex-none w-full max-w-2xl px-4'}>
