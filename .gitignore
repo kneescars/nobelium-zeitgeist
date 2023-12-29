@@ -28,6 +28,9 @@ public/favicon_.png
 .env
 .hushlogin
 package-lock_backup.json
+Post.js-copy
+Post-js-pre-error.js
+Post-copy-second-solution.js
 
 # debug
 npm-debug.log*
