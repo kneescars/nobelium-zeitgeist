@@ -1,25 +1,27 @@
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import { useConfig } from '@/lib/config'
-import Head from 'next/head'
-import PropTypes from 'prop-types'
-import cn from 'classnames'
-// import BlogPost from './BlogPost'
+import Footer from '@/components/Footer';
+import Head from 'next/head';
+import Header from '@/components/Header';
+import PropTypes from 'prop-types';
+import cn from 'classnames';
+import { useConfig } from '@/lib/config';
 
 const Container = ({ children, layout, fullWidth, ...customMeta }) => {
-  const BLOG = useConfig()
+  const BLOG = useConfig();
 
-  const url = BLOG.path.length ? `${BLOG.link}/${BLOG.path}` : BLOG.link
+  const url = BLOG.path.length ? `${BLOG.link}/${BLOG.path}` : BLOG.link;
   const meta = {
     title: BLOG.title,
     type: 'website',
-    ...customMeta
-  }
+    ...customMeta,
+  };
+
+  // Ensure date is a string
+  const dateString = meta.date ? new Date(meta.date).toISOString() : '';
+
   return (
     <div>
       <Head>
         <title>{meta.title}</title>
-        {/* <meta content={BLOG.darkBackground} name="theme-color" /> */}
         <meta name="robots" content="follow, index" />
         <meta charSet="UTF-8" />
         {BLOG.seo.googleSiteVerification && (
@@ -59,7 +61,7 @@ const Container = ({ children, layout, fullWidth, ...customMeta }) => {
           <>
             <meta
               property="article:published_time"
-              content={meta.date}
+              content={dateString}
             />
             <meta property="article:author" content={BLOG.author} />
           </>
@@ -82,11 +84,12 @@ const Container = ({ children, layout, fullWidth, ...customMeta }) => {
         <Footer fullWidth={fullWidth} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 Container.propTypes = {
-  children: PropTypes.node
-}
+  children: PropTypes.node,
+  // Add PropTypes for other props as needed
+};
 
-export default Container
+export default Container;
