@@ -1,7 +1,7 @@
 const BLOG = {
   title: 'Digital Zeitgeist',
   author: 'Cassiano Gobbet',
-  email: 'https://t.me/cassiano_telegram',
+  email: 'cranial-05chervil@icloud.com',
   link: 'https://zeitgeist.digital',
   description: 'The zeroes and ones shaping our times.',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
