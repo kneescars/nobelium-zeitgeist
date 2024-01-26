@@ -18,7 +18,7 @@ const BLOG = {
   showArchive: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   ogImageGenerateURL: 'https://og-image-craigary.vercel.app', // The link to generate OG image, don't end with a slash
-  socialLink: 'https://bsky.app/profile/cassianogobbet.bsky.social',
+  socialLink: 'https://linktr.ee/cassiano.gobbet',
   seo: {
     keywords: ['Digital', 'Zeitgeist', 'Technology','Media','Disinformation','Society'],
     googleSiteVerification: 'gTNmBeIzBgkgMDrNFmKfv_r1J0OuN8NkSlpWAxMgnEs' // Remove the value or replace it with your own google site verification code
