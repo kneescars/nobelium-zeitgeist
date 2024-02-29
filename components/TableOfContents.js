@@ -1,38 +1,28 @@
-import PropTypes from 'prop-types';
-import cn from 'classnames';
-import { getPageTableOfContents } from 'notion-utils';
+import PropTypes from 'prop-types'
+import { getPageTableOfContents } from 'notion-utils'
+import cn from 'classnames'
 
-export default function TableOfContents({ blockMap, className, style }) {
-  // Assuming blockMap has the necessary structure for getPageTableOfContents to work
-  if (!blockMap || !blockMap.collection || !blockMap.block) {
-    console.error('TableOfContents received undefined or incomplete blockMap');
-    return null;
-  }
+export default function TableOfContents ({ blockMap, className, style }) {
+  const collectionId = Object.keys(blockMap.collection)[0]
+  const page = Object.values(blockMap.block).find(block => block.value.parent_id === collectionId).value
+  const nodes = getPageTableOfContents(page, blockMap)
 
-  const collectionId = Object.keys(blockMap.collection)[0];
-  const pageBlock = Object.values(blockMap.block).find(block => block.value.parent_id === collectionId);
+  if (!nodes.length) return null
 
-  if (!pageBlock) {
-    console.error('TableOfContents could not find the page block');
-    return null;
-  }
-
-  const page = pageBlock.value;
-  const nodes = getPageTableOfContents(page, blockMap);
-
-  if (!nodes.length) {
-    return null; // Return null if there are no nodes to display in the table of contents
-  }
-
-  function scrollTo(id) {
-    id = id.replaceAll('-', '');
-    const target = document.querySelector(`.notion-block-${id}`);
-    if (!target) return;
-    const top = document.documentElement.scrollTop + target.getBoundingClientRect().top - 65; // Adjust based on your page's layout
+  /**
+   * @param {string} id - The ID of target heading block (could be in UUID format)
+   */
+  function scrollTo (id) {
+    id = id.replaceAll('-', '')
+    const target = document.querySelector(`.notion-block-${id}`)
+    if (!target) return
+    // `65` is the height of expanded nav
+    // TODO: Remove the magic number
+    const top = document.documentElement.scrollTop + target.getBoundingClientRect().top - 65
     document.documentElement.scrollTo({
       top,
       behavior: 'smooth'
-    });
+    })
   }
 
   return (
@@ -45,7 +35,7 @@ export default function TableOfContents({ blockMap, className, style }) {
           <a
             data-target-id={node.id}
             className="block py-1 hover:text-black dark:hover:text-white cursor-pointer transition duration-100"
-            style={{ paddingLeft: `${node.indentLevel * 24}px` }}
+            style={{ paddingLeft: (node.indentLevel * 24) + 'px' }}
             onClick={() => scrollTo(node.id)}
           >
             {node.text}
@@ -53,11 +43,9 @@ export default function TableOfContents({ blockMap, className, style }) {
         </div>
       ))}
     </aside>
-  );
+  )
 }
 
 TableOfContents.propTypes = {
-  blockMap: PropTypes.object.isRequired,
-  className: PropTypes.string,
-  style: PropTypes.object,
-};
+  blockMap: PropTypes.object.isRequired
+}
