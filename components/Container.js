@@ -1,22 +1,22 @@
-import Footer from '@/components/Footer'
-import Head from 'next/head'
-import Header from '@/components/Header'
-import PropTypes from 'prop-types'
-import cn from 'classnames'
-import { useConfig } from '@/lib/config'
+import Footer from '@/components/Footer';
+import Head from 'next/head';
+import Header from '@/components/Header';
+import PropTypes from 'prop-types';
+import cn from 'classnames';
+import { useConfig } from '@/lib/config';
 
-const Container = ({ children, layout, fullWidth, ...customMeta }) => {
-  const BLOG = useConfig()
+const Container = ({ children, layout, fullWidth, dynamicOgImage, ...customMeta }) => {
+  const BLOG = useConfig();
 
-  const url = BLOG.path.length ? `${BLOG.link}/${BLOG.path}` : BLOG.link
+  const url = BLOG.path.length ? `${BLOG.link}/${BLOG.path}` : BLOG.link;
   const meta = {
     title: BLOG.title,
     type: 'website',
-    ...customMeta
-  }
+    ...customMeta,
+  };
 
-  // URL of your static image
-  const staticImageUrl = "https://troovr.com/img/dz_og.png";
+  // Use the dynamicOgImage if provided, else fallback to the static image URL
+  const ogImageUrl = dynamicOgImage || "https://troovr.com/img/dz_og.png";
 
   return (
     <div>
@@ -31,16 +31,14 @@ const Container = ({ children, layout, fullWidth, ...customMeta }) => {
         <meta property="og:description" content={meta.description} />
         <meta property="og:url" content={meta.slug ? `${url}/${meta.slug}` : url} />
 
-        {/* Updated og:image meta tag */}
-        <meta property="og:image" content={staticImageUrl} />
+        {/* Dynamically set the og:image meta tag */}
+        <meta property="og:image" content={ogImageUrl} />
 
         <meta property="og:type" content={meta.type} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:title" content={meta.title} />
-
-        {/* Updated twitter:image meta tag */}
-        <meta name="twitter:image" content={staticImageUrl} />
+        <meta name="twitter:image" content={ogImageUrl} />
 
         {meta.type === 'article' && (
           <>
@@ -57,11 +55,14 @@ const Container = ({ children, layout, fullWidth, ...customMeta }) => {
         <Footer fullWidth={fullWidth} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 Container.propTypes = {
-  children: PropTypes.node
-}
+  children: PropTypes.node,
+  layout: PropTypes.string,
+  fullWidth: PropTypes.bool,
+  dynamicOgImage: PropTypes.string, // Added PropTypes for dynamicOgImage
+};
 
-export default Container
+export default Container;

@@ -32,6 +32,7 @@ Post.js-copy
 Post-js-pre-error.js
 Post-copy-second-solution.js
 components/BlogPostBackup.js
+_app-version_to_replace_avoid_vercel_warning.js
 
 # debug
 npm-debug.log*
