@@ -22,7 +22,7 @@ export default function BlogPost ({ post, blockMap, emailHash }) {
   const fullWidth = post.fullWidth ?? false
 
   // Determine the Open Graph image URL
-  const ogImageUrl = post.ogImage ? post.ogImage : "YOUR_DEFAULT_IMAGE_URL"; // Fallback to a default image URL if post.ogImage is not available
+  const ogImageUrl = post.ogImage ? post.ogImage : "https://troovr.com/img/dz_og.png"; // Fallback to a default image URL if post.ogImage is not available
 
   return (
     <>
