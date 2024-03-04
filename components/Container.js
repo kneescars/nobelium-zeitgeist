@@ -12,7 +12,7 @@ const Container = ({ children, layout, fullWidth }) => {
   return (
     <div>
       <Head>
-        <title>{BLOG.title}</title>
+        <title>{BLOG.title} | {BLOG.description}</title>
         <meta name="robots" content="follow, index" />
         <meta charSet="UTF-8" />
         {/* Other general meta tags can remain */}
