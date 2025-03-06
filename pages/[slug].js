@@ -34,6 +34,7 @@ export default function BlogPost ({ post, blockMap, emailHash }) {
         <meta property="og:url" content={`${BLOG.link}/${post.slug}`} />
         <meta property="og:type" content="article" />
         <meta property="og:image" content={ogImageUrl} /> {/* Dynamically set the image URL */}
+        <meta property="fb:app_id" content="900975906619055" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.summary} />
