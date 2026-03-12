@@ -11,7 +11,7 @@ const BLOG = {
   lightBackground: '#bfbfbf', // use hex value, don't forget '#' e.g #fffefc
   darkBackground: '#212936', // use hex value, don't forget '#'
   path: '', // leave this empty unless you want to deploy Nobelium in a folder
-  since: 2023, // If leave this empty, current year will be used.
+  since: 2014, // If leave this empty, current year will be used.
   postsPerPage: 10,
   sortByDate: true,
   showAbout: true,
@@ -20,7 +20,7 @@ const BLOG = {
   ogImageGenerateURL: 'https://og-image-craigary.vercel.app', // The link to generate OG image, don't end with a slash
   socialLink: 'https://linktr.ee/cassiano.gobbet',
   seo: {
-    keywords: ['Digital', 'Zeitgeist', 'Technology','Media','Disinformation','Society'],
+    keywords: ['Digital', 'Zeitgeist', 'Technology','Media','Disinformation','Society', 'Artificial Intelligence', 'AI'],
     googleSiteVerification: 'gTNmBeIzBgkgMDrNFmKfv_r1J0OuN8NkSlpWAxMgnEs' // Remove the value or replace it with your own google site verification code
   },
   notionPageId: process.env.NOTION_PAGE_ID, // DO NOT CHANGE THIS！！！
